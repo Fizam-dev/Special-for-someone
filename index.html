@@ -801,7 +801,7 @@
         <button class="music-btn" id="playBtn">
             <i class="fas fa-play"></i>
         </button>
-        <span class="music-text">Putar Musik</span>
+        <span class="music-text">Play</span>
         <audio id="bgMusic" loop>
             <source src="Nadhif Basalamah - penjaga hati (Lirik).mp3" type="audio/mpeg">
             Browser Anda tidak mendukung elemen audio.
@@ -811,13 +811,8 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-              <p class="footer-text">daripada FizamCyberSec</p>
-            <div class="footer-icons">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-            </div>
+              <p class="footer-text">ikhlas daripada FizamCyberSec</p>
+        
         </div>
     </footer>
     
@@ -949,14 +944,14 @@
             if (isPlaying) {
                 bgMusic.pause();
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                musicPlayer.querySelector('.music-text').textContent = 'Putar Musik';
+                musicPlayer.querySelector('.music-text').textContent = 'Play';
             } else {
                 bgMusic.play().catch(e => {
                     console.log("Autoplay diblokir oleh browser. Klik lagi untuk memutar.");
-                    musicPlayer.querySelector('.music-text').textContent = 'Klik lagi untuk memutar';
+                    musicPlayer.querySelector('.music-text').textContent = 'Play Again';
                 });
                 playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                musicPlayer.querySelector('.music-text').textContent = 'Musik Diputar';
+                musicPlayer.querySelector('.music-text').textContent = 'Pause';
             }
             isPlaying = !isPlaying;
         });
