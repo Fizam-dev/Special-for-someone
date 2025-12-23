@@ -91,6 +91,7 @@
             padding: 15px 0;
             z-index: 1100;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
         }
         
         .nav-container {
@@ -150,6 +151,7 @@
             color: var(--white);
             cursor: pointer;
             transition: var(--transition);
+            z-index: 1101;
         }
         
         .hamburger:hover {
@@ -164,7 +166,7 @@
             width: 100%;
             height: 100vh;
             background-color: var(--black);
-            z-index: 1000;
+            z-index: 1001;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -669,6 +671,11 @@
             .gallery-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
+            
+            .close-btn {
+                top: 25px;
+                right: 25px;
+            }
         }
     </style>
 </head>
@@ -771,7 +778,7 @@
         </div>
     </div>
     
-    <!-- Quotes Section -->
+    
     
     <!-- Surprise Section -->
     <section id="surprise">
@@ -872,6 +879,10 @@
             {
                 text: "Ulang tahun adalah awal baru, kesempatan baru untuk mengubah hidup menjadi lebih baik.",
                 author: "Anonymous"
+            },
+            {
+                text: "Selamat ulang tahun Alia! Semoga tahun ini penuh dengan tawa, cinta, dan pencapaian.",
+                author: "Untukmu"
             }
         ];
         
@@ -880,16 +891,22 @@
         // Toggle Sidebar
         hamburger.addEventListener('click', () => {
             sidebar.classList.add('active');
+            hamburger.style.opacity = '0';
+            hamburger.style.visibility = 'hidden';
         });
         
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
+            hamburger.style.opacity = '1';
+            hamburger.style.visibility = 'visible';
         });
         
         // Close sidebar when clicking on a link
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 sidebar.classList.remove('active');
+                hamburger.style.opacity = '1';
+                hamburger.style.visibility = 'visible';
                 
                 // Update active link
                 navLinks.forEach(item => item.classList.remove('active'));
@@ -1004,7 +1021,7 @@
                 confetti.style.position = 'absolute';
                 confetti.style.width = '10px';
                 confetti.style.height = '10px';
-                confetti.style.backgroundColor = i % 2 === 0 ? '#fff' : '#000';
+                confetti.style.backgroundColor = getRandomColor();
                 confetti.style.borderRadius = '50%';
                 confetti.style.top = '50%';
                 confetti.style.left = Math.random() * 100 + '%';
@@ -1026,6 +1043,11 @@
                     confetti.remove();
                 };
             }
+        }
+        
+        function getRandomColor() {
+            const colors = ['#fff', '#000', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7'];
+            return colors[Math.floor(Math.random() * colors.length)];
         }
         
         // Initialize first quote
